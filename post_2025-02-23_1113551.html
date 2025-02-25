@@ -4,52 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hey backend masters, how detailed do you write the comments in your API documentation?</title>
+    <title>Backend masters, to what extent do you write comments in your interface documentation?</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Hey backend masters, how detailed do you write the comments in your API documentation?</h1>
-        <h2>后端的大佬们 你们的接口文档注释写道什么程度呀</h2>
+        <h1>Backend masters, to what extent do you write comments in your interface documentation?</h1>
+        <h2>叩问诸位后端道友，接口文牒注释详尽几何？</h2>
         <div class="content">
-            <p>As the title says.
+            <p>As the title suggests.
 
-This is what another colleague in the group wrote:
+This is written by another colleague in the group.
 
 ```json
 {
-    "code": 200,
-    "data": {
-        "forum": {
-            "forum_id": 1, // Post ID
-            "user_id": 2, // Poster ID
-            "content": "Only supports text input, Simplified Chinese, numbers, upper and lower case letters, Chinese and English punctuation marks", // Post content
-            "created_at": "2024-12-12 16:28", // Posting time
-            "user_name": "Teacher", // Poster name
-            "avatar": "http://127.0.0.1:8000/assets/img/teacher_avatar_default.png" // Poster avatar
-        },
-        "forumReplyList": {
-            "data": [
-                {
-                    "forum_reply_id": 15, // Reply content ID
-                    "forum_id": 1, // Post ID
-                    "user_id": 2, // Reply user ID
-                    "content": "Another reply content", // Reply content
-                    "created_at": "2024-12-14 22:54", // Reply time
-                    "forum_reply_like_count": 0, // Reply likes
-                    "user_name": "Teacher", // Reply user name
-                    "avatar": "http://127.0.0.1:8000/assets/img/teacher_avatar_default.png", // Reply user avatar
-                    "reply_user_name": "Teacher", // Replied user name
-                    "is_delete": true, // Whether it is the current user's reply: true is the current user's reply and can be deleted, false is not the current user's reply and cannot be deleted
-                    "is_like": false // Whether the current user has liked it, true is liked, false is not liked
-                }
-            ],
-            "current": 1, // Current page
-            "total": 12, // Total number
-            "size": 10, // Current page size
-            "has_more_page": true // Whether there is a next page: true has a next page, false does not have a next page
-        }
-    }
+ "code": 200,
+ "data": {
+ "forum": {
+ "forum_id": 1, //Post ID
+ "user_id": 2, //Poster ID
+ "content": "Only supports text input, Simplified Chinese, numbers, uppercase and lowercase letters, Chinese and English punctuation", //Post content
+ "created_at": "2024-12-12 16:28", //Posting time
+ "user_name": "Teacher", //Poster name
+ "avatar": "http://127.0.0.1:8000/assets/img/teacher_avatar_default.png" //Poster avatar
+ },
+ "forumReplyList": {
+ "data": [
+ {
+ "forum_reply_id": 15, //Reply content ID
+ "forum_id": 1, //Post ID
+ "user_id": 2, //Reply user ID
+ "content": "Another reply content", //Reply content
+ "created_at": "2024-12-14 22:54", //Reply time
+ "forum_reply_like_count": 0, //Reply likes
+ "user_name": "Teacher", //Reply user name
+ "avatar": "http://127.0.0.1:8000/assets/img/teacher_avatar_default.png", //Reply user avatar
+ "reply_user_name": "Teacher", //Replied user name
+ "is_delete": true, //Whether it is the current user's reply: true is the current user's reply and can be deleted, false is not the current user's reply and cannot be deleted
+ "is_like": false //Whether the current user likes it, true liked false not liked
+ }
+ ],
+ "current": 1, //Current page
+ "total": 12, //Total number
+ "size": 10, //Current page size
+ "has_more_page": true //Whether there is a next page: true has next page false no next page
+ }
+ }
 }
 ```
 
@@ -57,77 +57,77 @@ This is what I wrote, completely without comments.
 
 ```json
 {
-    "code": 200,
-    "data": {
-        "id": 2,
-        "type": "in_select",
-        "question_description": "Please choose Azure Dragon or White Tiger",
-        "question_images": [],
-        "question_options": [
-            {
-                "description": "Azure Dragon",
-                "image": null
-            },
-            {
-                "description": "White Tiger",
-                "image": null
-            }
-        ],
-        "student_answer_exists": true,
-        "is_can_submit": false,
-        "socket_name": "course_interact_1_2"
-    }
+ "code": 200,
+ "data": {
+ "id": 2,
+ "type": "in_select",
+ "question_description": "Please select Azure Dragon or White Tiger",
+ "question_images": [],
+ "question_options": [
+ {
+ "description": "Azure Dragon",
+ "image": null
+ },
+ {
+ "description": "White Tiger",
+ "image": null
+ }
+ ],
+ "student_answer_exists": true,
+ "is_can_submit": false,
+ "socket_name": "course_interact_1_2"
+ }
 }
 ```
 
 ```json
 {
-    "code": 200,
-    "data": [
-        {
-            "id": 2,
-            "body": "Top level",
-            "user_type": "teacher",
-            "user_nickname": "Teacher nickname A",
-            "user_avatar": "http://127.0.0.1:8000/assets/img/teacher_avatar_default.png",
-            "created_at": "2025-01-07 20:19:38",
-            "childs": [
-                {
-                    "id": 6,
-                    "body": "Reply 2 to Reply 1",
-                    "user_type": "student",
-                    "user_nickname": "Cheng Fengying",
-                    "user_avatar": "http://127.0.0.1:8000/assets/img/student_avatar_default.png",
-                    "created_at": "2025-01-07 20:20:15",
-                    "reply_user_nickname": "Jin Ying"
-                },
-                {
-                    "id": 5,
-                    "body": "Reply 1 to Reply 1",
-                    "user_type": "teacher",
-                    "user_nickname": "An Zhiyuan",
-                    "user_avatar": "http://127.0.0.1:8000/assets/img/teacher_avatar_default.png",
-                    "created_at": "2025-01-07 20:20:12",
-                    "reply_user_nickname": "Jin Ying"
-                }
-            ]
-        }
-    ]
+ "code": 200,
+ "data": [
+ {
+ "id": 2,
+ "body": "Top level",
+ "user_type": "teacher",
+ "user_nickname": "Teacher Nickname A",
+ "user_avatar": "http://127.0.0.1:8000/assets/img/teacher_avatar_default.png",
+ "created_at": "2025-01-07 20:19:38",
+ "childs": [
+ {
+ "id": 6,
+ "body": "Reply 2 to Reply 1",
+ "user_type": "student",
+ "user_nickname": "Cheng Fengying",
+ "user_avatar": "http://127.0.0.1:8000/assets/img/student_avatar_default.png",
+ "created_at": "2025-01-07 20:20:15",
+ "reply_user_nickname": "Jin Ying"
+ },
+ {
+ "id": 5,
+ "body": "Reply 1 to Reply 1",
+ "user_type": "teacher",
+ "user_nickname": "An Zhiyuan",
+ "user_avatar": "http://127.0.0.1:8000/assets/img/teacher_avatar_default.png",
+ "created_at": "2025-01-07 20:20:12",
+ "reply_user_nickname": "Jin Ying"
+ }
+ ]
+ }
+ ]
 }
 ```
 
-Then, a frontend developer in the group wants me to write more clearly and mark the meaning of each field.
+Then a front-end colleague in the group hopes that I can write it more clearly and label the meaning of each field.
 
 I am confused.
 
 Furthermore,
 
-Frontend developers,
+Front-end masters,
 
-What does the ideal API documentation look like in your mind?</p>
-            <p>如题
+What is the interface documentation like in your minds?</p>
+            <p>正所谓题也。
 
-这是组内另一个同事写的
+组内同门所书，其文如下：
 
 ```json
 {
@@ -166,7 +166,7 @@ What does the ideal API documentation look like in your mind?</p>
 }
 ```
 
-这是我写的 完全无注释
+鄙人之作，空空如也。
 
 ```json
 {
@@ -229,20 +229,20 @@ What does the ideal API documentation look like in your mind?</p>
 }
 ```
 
-然后嘛 组内的一个前端 希望我写的清楚一点 标清楚每个字段的含义
+组内前端道友，望鄙人详述其意，标注每处灵韵。
 
-我 产生了迷茫
+吾甚惑也。
 
-再者
+再问：
 
-前端的大佬们
+诸位前端天骄，
 
-你们心中的接口文档是咋样的</p>
+汝等心中，接口文牒当若何般？</p>
         </div>
         <div class="replies">
             <h3>评论</h3>
             <ul>
-                <li>I can't accept childs<br>我不能接受 childs</li><li>First, use a large model to help me build a basic structure, such as generating complete documentation directly from code or Swagger, and then focus on perfecting the key logical fields and easily confused fields yourself. Most of this kind of documentation is nonsense, self-explanatory; but some individual fields are indeed quite complicated and need special explanation. If you don't have documentation or write it in detail, then you may be blamed if something goes wrong; but typing every field is purely manual work, so distinguish the priorities and make good use of AI.<br>先用大模型帮我构建一个基础的结构出来，比如根据代码或者 swagger 直接生成完整的文档，再把关键逻辑字段、易混淆的字段自己关注完善一下就行了。这种文档属于那种绝大部分都是废话，见文知意的；但是个别的字段确实比较绕需要特别说明的。如果你没有文档或者写的不细，那到时候真出了问题可能就是你背锅了；但是每个字段都打字又纯属体力活，所以分清主次，善用 AI 就好了。</li><li>Backend, every field has it. This is a basic requirement.<br>后端，每个字段都有。这是基本的要求。</li><li>The naming of `is_can_submit` is strange.<br>`is_can_submit` 这个命名方式好奇怪啊</li><li>There are many ways to document, not necessarily through comments. Generally speaking, if the data is clear, there is no need to comment on every field. And the suggestion of "I hope you write more clearly and mark the meaning of each field" also lacks guidance. Which field has any ambiguity needs to be specifically pointed out. The sentence "write in more detail" makes the same mistake as "the documentation is not detailed enough." For example: what other values ​​are there besides in_select for type? Why is question_images empty? Why is it an array? How many images should be placed normally? Why is the image in options null, what formats are supported? What does student_answer_exists mean? Does it mean there is a conflict with other students' answers? What does is_can_submit mean? Under what circumstances will it be false? What does socket_name mean? Why choose 2 for id? Is it globally unique? If it is globally unique, why not choose a large number as an example? If the sequence in the session is not starting from 1 or 0? What is "Reply 2 to Reply 1"? Is the reply with id 2 reply 1? Who is Jin Ying? Is it the nickname with id 2 and user_nickname as "Teacher nickname A"? What is the time zone of created_at?<br>文档有很多方式，不一定通过注释的方式。一边来说数据清楚是不需要每个字段都注释的。而“希望我写的清楚一点 标清楚每个字段的含义”这种建议也缺乏指引，哪个字段有什么歧义需要具体指出来。一句“写详细点”犯了和“文档不详细”一样的错误。比如：type 除了 in_select 还有什么值？question_images 为什么是空的？为什么是个数组？正常应该放几个 image ？options 的 image 为什么是 null ，支持的格式是什么？什么叫 student_answer_exists ？是和别的学生的答案冲突的意思？is_can_submit 是什么意思？什么情况会是 false ？socket_name 是什么意思？id 为什么选择 2 ？是全局唯一的吗？如果是全局唯一的为什么不选择一个很大的数字做例子？如果会话内的序列为什么不是从 1 或者 0 开始？什么是“回复 1 的回复 2”？ id 为 2 的回复是回复 1 吗？金莹是谁？是 id 为 2 ，user_nickname 为"教师昵称阿"的 nickname ？created_at 的时区是什么？</li><li>Since it is an API documentation, I suggest not to use code comments to explain the fields, but to write them separately, the code is just a return example; in addition, whether each field needs to be specifically explained depends on the scenario. If it is internal front-end and back-end collaboration within the company, after there is a fixed style habit, some common fields (such as id, total) do not need to be explained in every interface. If it is a public API or an API delivered to the outside, the more detailed the better.<br>既然是接口文档，我建议是不要用代码注释的方式去解释字段，而是分开来写，代码只是一个返回示例即可；另外是否需要每个字段都解释具体还得看场景，如果是公司内部前后端协作，有个固定的风格习惯后，一些通用字段（比如 id 、total ）可以不用每个接口都解释，如果是公开 API 或者交付给外部的 API 越详细越好。</li><li>Documentation is like the backend and frontend signing a contract. Can you sign a contract written like this?<br>文档就是后端和前端在签合同，合同写这样你能签？</li><li>Add comments to enumerated values, add comments to multiple id's, and don't add comments to others.<br>枚举值的加注释，有多个某 id 的加注释，其它不加</li><li>Intruding with my open source interface tool https://github.com/LinuxSuRen/api-testing<br>乱入下我的开源接口工具 https://github.com/LinuxSuRen/api-testing</li><li>Isn't it about writing good comments at the code level and then generating Swagger documentation?<br>不是在代码层面写好注释然后生成 swagger 文档吗？</li><li>If you don't write comments, who knows what this field is for? If you guess wrong and a BUG occurs, will you fix it or the frontend will fix it? At least provide a name comment corresponding to the frontend for each field, whether it is required, the data type (format requirements), and if it is an enumeration, provide the value of each option and the corresponding instructions or source. If this structure has appeared in other interfaces, I will indicate that the structure and comments in this field are based on the structure under a certain field of a certain interface. For example, the data under the forumReplyList field, I will mark the array structure as forumReply{}, with The structure with the same name in the /reply/view interface shall prevail, and I will clearly specify the name of the structure in that interface.<br>不写注释鬼知道这个字段是干嘛的，到时候猜错了出 BUG ，是你改还是前端改？每个字段最少提供一个与前端对应的名称注释，是否必填，数据类型（格式要求），如果是枚举，则提供每个选项的值与对应说明或获取来源。如果这个结构在其他接口出现过，我会标明该字段内结构与注释以某接口的某字段下结构为准，例如 forumReplyList 字段下数据，我会标注为 数组内结构为 forumReply{}，以接口 /reply/view 的同名结构为准，我在那个接口会明确指定该结构的名称。</li><li>If you are the frontend developer and the backend developer only gave you a vague return example, you would probably be even more confused.<br>如果你是前端，后端只给了不清不楚的返回示例，估计你更迷茫</li><li>If you are developing it yourself, if you are sure that the field name is clear and obvious, you don’t need to write it. For example, everyone knows what user_id is, but is_delete will be confusing for you three months later. So if it’s multi-person collaboration, it is necessary to ensure clear comments on each field, because you cannot guarantee that everyone can understand the naming of each field, and this kind of writing once can benefit everyone (including yourself), which is also a basic literacy.<br>自己开发如果你有把握保证字段名清晰明了就可以不用写比如 user_id 谁都知道是啥但是 is_delete 对于三个月后的你就丈二和尚了所以如果是多人协作，保证每个字段清晰注释是必要的，因为你无法保证每个字段命名都能让别人看得懂，而且这种只要写一遍就能让所有人受益（包括你自己），也是基本素养。</li><li>Write comments on some main logic. As for enumeration, because the model definition has a method to replace it with Chinese, there are no comments. It depends on whether it is collaborative development or self-development. Do whatever makes you comfortable. For collaborative basic syntax, there is no need to write other things.<br>部分主要逻辑写注释至于枚举因为模型定义有替换成中文的方法所以也没什么注释，看是合作开发还是自己开发了，自己怎么舒服怎么来，合作基础的语法不用其他该写就写</li><li>You can tell the meaning by looking at the field names. Your colleague's is like telling you 1+1=2, this is a mouse, this is a monitor, this level.<br>你的看字段名就知道含义，你同事的像是在告诉你 1+1=2 、这是鼠标、这是显示器，这种层次</li><li>Either remark it in the class and use Swagger to display the field meaning.<br>要么就备注在类里，用 swagger 显示字段含义</li><li>GraphQL is used for the interface, and detailed field comments are written in the code, and then the GraphQL Schema is generated using the framework. The frontend directly uses the GraphQL Schema to generate the interface SDK to ensure end-to-end type safety.<br>接口用的 GraphQL ，代码里会写详细的字段注释，再用框架生成  GraphQL Schema 。前端直接用 GraphQL Schema 生成接口 SDK ，确保端对端类型安全。</li><li>@wogogoing @zbw0414 swagger +1, I like to use fastapi / robyn which has openapi/swagger documentation output, it is concise and clear and can be directly tested online<br>@wogogoing @zbw0414 swagger +1 ，就喜欢用 fastapi / robyn 这种带有 openapi/swagger 文档输出的，简洁明了还能直接在线测试</li><li>openapi<br>openapi</li><li>It doesn't take you much time to have AI add comments.<br>让 AI 加上注释又不需要花你多少时间.</li>
+                <li>I cannot accept childs<br>不可纳子</li><li>First use a large model to help me build a basic structure, such as generating complete documentation directly from code or swagger, and then focus on improving key logical fields and easily confused fields. This kind of documentation is mostly nonsense, but some individual fields are indeed more convoluted and require special explanation. If you don't have documentation or write it in detail, you may be responsible for the problem; but typing every field is purely physical work, so distinguish between primary and secondary, and make good use of AI.<br>宜先以鸿蒙模型构筑雏形，若依代码或Swagger衍化全文，再精炼要处，释疑难解之辞。文虽繁冗，见字明意者居多，然偶有晦涩，需点明。若无文牒或细微之处匮乏，责恐难逃；逐字注释，徒耗灵力。故当分清主次，善用智械。</li><li>Backend, every field must be documented. This is a basic requirement.<br>后端，诸字段皆需注释，此乃修行之基。</li><li>`is_can_submit` This naming method is so strange.<br>`is_can_submit`此命名甚异，灵韵不通。</li><li>There are many ways to document, not necessarily through comments. Generally speaking, if the data is clear, there is no need to comment on every field. And the suggestion of "I hope you can write it more clearly and label the meaning of each field" also lacks guidance. Which field has any ambiguity needs to be specifically pointed out. The sentence "write in more detail" makes the same mistake as "the documentation is not detailed". For example: what other values are there besides in_select for type? Why are question_images empty? Why is it an array? How many images should be placed normally? Why is the image of options null, what format is supported? What does student_answer_exists mean? Does it mean it conflicts with other students' answers? What does is_can_submit mean? What situation will be false? What does socket_name mean? Why choose 2 for id? Is it globally unique? If it is globally unique, why not choose a large number as an example? If it is a sequence within a session, why not start from 1 or 0? What is "Reply 2 to Reply 1"? Is the reply with id 2 replying to 1? Who is Jin Ying? Is it the nickname of id 2, user_nickname is "Teacher Nickname A"? What is the time zone of created_at?<br>文牒之道繁多，非必以注释为之。常言道，数据清晰则不必尽注。然“望君详尽，标明各处灵韵”之言，亦乏指引。何处存疑，当明言。一句“详尽”，犯同“简略”之过。例如：type除in_select外，尚有何值？question_images为何为空？何故为数组？常例应置几图？options之image为何为空，所支持之格式为何？student_answer_exists何意？与他生之答相悖乎？is_can_submit何意？何况为假？socket_name何谓？id为何择2？是否寰宇唯一？若然，何不择一巨数以为例？若乃会话内之序，何不自1或0始？何谓“回复 1 的回复 2”？id为2之回复，答复1乎？金莹者何人？乃id为2，user_nickname为"教师昵称阿"之名乎？created_at之时区为何？</li><li>Since it is interface documentation, I suggest not using code comments to explain the fields, but writing them separately. The code is just a return example; in addition, whether each field needs to be explained specifically depends on the scene. If it is an internal front-end and back-end collaboration of the company, after having a fixed style habit, some general fields (such as id, total) can be Use without explaining each interface. If it is a public API or an API delivered to the outside, the more detailed the better.<br>既为接口文牒，宜另撰文以释字段，代码仅作示例。再者，是否详述，端看境况。若乃公司内部协作，既有定式，则通用者（如id，total），可免赘述。若乃公诸于众之API，则愈详尽愈佳。</li><li>The documentation is a contract signed between the backend and the frontend. Can you sign the contract like this?<br>文牒乃后端与前端所立之契，此等契约，汝能签否？</li><li>Add comments for enumeration values, add comments for multiple some ids, and don't add others.<br>枚举之值，须加注释；多重ID，亦需备注；余者可免。</li><li>Interrupting, here is my open source interface tool https://github.com/LinuxSuRen/api-testing<br>闲话一句，此乃吾之开源接口工具：https://github.com/LinuxSuRen/api-testing</li><li>Isn't the comment written well in the code and then a swagger document generated?<br>莫非代码中注释详尽，再以Swagger生成文牒乎？</li><li>If you don't write comments, who knows what this field is for? If you guess wrong and there is a BUG, will you change it or will the frontend change it? At least provide a name comment corresponding to the frontend for each field, whether it is required, the data type (format requirements), and if it is an enumeration, provide the value and corresponding description or source of each option. If this structure has appeared in other interfaces, I will indicate that the structure and comments in this field are based on the structure under a certain field of a certain interface, for example, for the data under the forumReplyList field, I will mark it as the structure in the array is forumReply{}, with the interface The structure with the same name in /reply/view shall prevail, and I will clearly specify the name of the structure in that interface.<br>不书注释，谁知此字段作甚？若猜错出BUG，君改之抑或前端改之？每字段当注名，对应前端，是否必填，数据类项（格式要求），若是枚举，明其值及释义，或溯其源。若此结构现于他接口，则标明此字段结构及注释，以某接口某字段下结构为准。如forumReplyList字段，注曰：数组内结构为forumReply{}，以接口/reply/view之同名结构为准，吾当于彼接口明言此结构之名。</li><li>If you are a frontend developer and the backend only gives you unclear return examples, you will probably be even more confused.<br>若君乃前端，后端仅予模糊示例，则恐更迷茫矣。</li><li>If you are developing it yourself, if you are sure that the field name is clear and understandable, you don't need to write it, for example, everyone knows what user_id is, but the three-month-old you will be confused about is_delete, so if it is a multi-person collaboration, it is necessary to ensure that each field is clearly commented, because you cannot guarantee that everyone can understand the naming of each field, and this only needs to be written once to benefit everyone (including yourself), which is also a basic literacy.<br>若君独力开发，字段名明晰易懂则可免注。如 user_id，人皆知其意。然 is_delete，三月后之君恐亦困惑。故若多人协作，则必使每字段注释清晰。盖不能保人人皆解各字段之命名。此举一劳永逸，泽被众人（亦包括君），乃修行之基也。</li><li>Write comments for some main logic. As for enumerations, because the model definition has a method to replace them with Chinese, there are no comments. It depends on whether it is collaborative development or self-development. Just be comfortable with yourself. For collaborative basic grammar, you don’t need to write other things that should be written.<br>主逻辑处书注释。枚举之属，因模型定义可代以中文，故免于注释。观其协作开发抑或独力开发，随心所欲。协作之基，语法可免，余者当书。</li><li>Your field names are easy to understand, but your colleague's is like telling you 1+1=2, this is a mouse, this is a monitor, that level.<br>君之字段名易解，同僚之作却似教人一加一等于二，此乃鼠矣，此乃芒镜矣，徒增笑耳。</li><li>Either note it in the class and use swagger to display the meaning of the field.<br>或于类中备注，以 Swagger 显字段之义。</li><li>The interface uses GraphQL, and detailed field comments will be written in the code, and then GraphQL Schema will be generated using the framework. The front end directly uses GraphQL Schema to generate interface SDK to ensure end-to-end type safety.<br>接口用GraphQL，代码中详注字段，再以框架生GraphQL Schema。前端直用GraphQL Schema衍接口SDK，保端对端类型之安全。</li><li>@wogogoing @zbw0414 swagger +1, I like to use fastapi / robyn with openapi/swagger documentation output, which is concise and clear and can also be tested online directly.<br>@wogogoing @zbw0414 Swagger赞！善用FastAPI/Robyn之辈，拥OpenAPI/Swagger文档输出，简明扼要，可在线测试。</li><li>openapi<br>开道。</li><li>Let AI add comments, it doesn't take you much time.<br>遣智械添注，不费尔几时。</li>
             </ul>
         </div>
     </div>
