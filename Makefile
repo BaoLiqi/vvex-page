@@ -6,6 +6,7 @@ copy-html:
 	cp ../v2ex_mofish/html_output/* .
 
 git-commit:
+	git add .
 	git commit -am "update data"
 
 
