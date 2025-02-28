@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The most basic go concurrent programming question, which stumped 90% of the candidates</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>The most basic go concurrent programming question, which stumped 90% of the candidates</h1>
+        <details>
+            <summary>Show Chinese Title</summary>
+            <h3>问道并发之基，九成修士止步</h3>
+        </details>
+        <div class="content">
+            <p>Two goroutines communicate via channel. One goroutine sends 0,1,2,3,4 sequentially, and the other goroutine receives and outputs them. It examines basic knowledge such as goroutine control and channel closing. The code written by the interviewees has various problems.
+
+1. Some goroutines exit before the program even starts. When prompted, they still can&#x27;t think of using waitgroup, context, done channel, etc., but use time sleep to wait;
+2. Some don&#x27;t know that the channel should be closed by the producer and panic because the producer in the main program closes it before the producer finishes sending;
+3. Some don&#x27;t check the return value of the consumer reading a closed channel, causing the program to deadlock.
+
+Last week, only 1 out of 5 interviewees wrote code that ran without problems on the first try. 1 couldn&#x27;t write it even after being prompted. The rest could gradually modify to the correct code after being prompted.
+
+This question is still classic. Instead of asking about GMP, garbage collection algorithms, etc., this question can reveal the basics of go.</p>
+            <details>
+                <summary>Show Chinese Content</summary>
+                <p>双协程以通道传息，一协程依序发送 0,1,2,3,4，另协程受而显之。考协程御使、通道闭合之基。应试之修，所书代码百病丛生。
+
+其一，有协程未启则程序已崩，纵有提点，仍不知用等待组、上下文、终结通道之法，徒以时眠待之；
+其二，有不知通道当由生产者所封，主程序中生产者未竟而关，遂致崩毁；
+其三，有不察消费者读闭合通道之回值，程序径自死循环死锁。
+
+上周面五人，仅一人初试可成，一人经提点亦不能，余者经点拨可逐步修正。
+
+此题仍为经典，舍 GMP、垃圾回收算法之术，此题足见 go 之根基。</p>
+            </details>
+        </div>
+        <div class="replies">
+            <ul>
+                <li>Fishing addiction is a disease, needs to be treated<br><details><summary>Show Chinese Reply</summary>钓鱼成瘾，乃心魔缠身，当斩</details></li><li>I took a look and saw that the post “Is it difficult to come up with LRU algorithm questions in the first round of interviews?” was also posted by you last week. What type of position are you responsible for interviewing for, brother? Why is the topic difference so big? And to be honest, if 80% of the people who submit their resumes to you can&#x27;t even use the basics of chan clearly... Then you shouldn&#x27;t ask LRU during the interview for this position.<br><details><summary>Show Chinese Reply</summary>观之，上周“一面出 LRU 算法题算难吗”之帖亦兄所发。敢问兄台所面何职？何以题差若此？实言之，若投简历者，八成连通道之基皆不能用清...则此职面试不宜问 LRU 也。</details></li><li>I can only say that the OP is recruiting in the wrong direction. The 985 and 211 graduates you recruit are in the batch that does not lack interview opportunities in the market. If they are not particularly enthusiastic about coding, they will not delve into these things. Anyway, CRUD can easily get the money, and playing games after get off work is not worth it. On the other hand, the junior college and ordinary undergraduate students who are inferior to others in terms of academic qualifications may really delve into this kind of thing in order to stand out in the competition, but the smart OP has filtered out this possibility. Therefore, isn&#x27;t it normal that 90% of the interviewees can&#x27;t do it?<br><details><summary>Show Chinese Reply</summary>只言 OP 招贤方向有误。君所招之 985、211 毕业生，皆为市面不乏机缘之辈。若非酷代码者，断不会深究此物。反有大专普本之士，为脱颖而出，或真会研习此道，然聪慧 OP 已滤其可能性。故面试者九成不能，岂不正常？</details></li><li>How much is the salary? If the salary is low, then it is &quot;well-matched,&quot; very good.<br><details><summary>Show Chinese Reply</summary>俸禄几何？若俸禄低，则“门当户对”，善哉。</details></li><li>Don&#x27;t have a sense of superiority for no reason and then collect copper coins when you get old; first use pragmatic standards to screen, such as bachelor&#x27;s degree, CET-4/6, 3 years of experience, etc.<br><details><summary>Show Chinese Reply</summary>莫无故生优越感，老来收铜币也；先以务实之标准，若统招本科四六级，三年经验等，筛之。</details></li><li>Are you posting these every day because you want to switch to self-media?<br><details><summary>Show Chinese Reply</summary>日日发此，莫非欲转自媒体？</details></li><li>@ForkNMB Actually, when recruiting people, if you haven&#x27;t seen this question or prepared for it yourself, you will also be screened out if you use this question to test yourself.<br><details><summary>Show Chinese Reply</summary>@ForkNMB 实则招贤，若己未见此题，未曾准备，以此题试之，亦将被筛。</details></li><li>I have to point out that this candidate really has a problem, this, this is completely incompetent...<br><details><summary>Show Chinese Reply</summary>吾不得不言，此应试者实有问题，此，此乃全然不通...</details></li><li>Isn&#x27;t the essence of golang concurrency? If you don&#x27;t master this, you haven&#x27;t learned it.<br><details><summary>Show Chinese Reply</summary>golang 之精髓非并发乎？若不得其道，如未学。</details></li><li>If your state tests them unqualified, do you have the confidence to pass their questions when they question you in return? A single question cannot explain a person&#x27;s overall ability.<br><details><summary>Show Chinese Reply</summary>若君之态考之不合格，反之彼等提问君，君有信心通过乎？一题并不能说明人之整体能力。</details></li><li>package mainimport (	&quot;fmt&quot;	&quot;sync&quot;)func main() {	sw := sync.WaitGroup{}	sw.Add(1)	ch := make(chan int)	go func() {		for i := 0; i &lt; 5; i++ {			ch &lt;- i		}		close(ch)	}()	go func() {		defer sw.Done()		for i := range ch {			fmt.Println(i)		}	}()	sw.Wait()	fmt.Println(&quot;done&quot;)}<br><details><summary>Show Chinese Reply</summary>package mainimport (	&quot;fmt&quot;	&quot;sync&quot;)func main() {	sw := sync.WaitGroup{}	sw.Add(1)	ch := make(chan int)	go func() {		for i := 0; i &lt; 5; i++ {			ch &lt;- i		}		close(ch)	}()	go func() {		defer sw.Done()		for i := range ch {			fmt.Println(i)		}	}()	sw.Wait()	fmt.Println(&quot;done&quot;)}</details></li><li>I also asked this question in the interview. It feels like it&#x27;s related to the HR. Many HRs only look at the background and don&#x27;t understand technology. If they find a bunch of people, 90% of them can&#x27;t write it. The HR here is more professional now, and basically half of the people can write it. It&#x27;s funny to think about it, these people who can&#x27;t even write a clear communication of coroutines can talk eloquently about garbage collection, array expansion, optimistic locks, and pessimistic locks.<br><details><summary>Show Chinese Reply</summary>吾面试亦问此题。感之与人事相关。多有人事仅观背景而不懂技术，若寻一众，九成皆不得书。今之人事颇为专精，半数可书之。思之可笑，此辈协程通信尚不能明，讲及垃圾回收、数组扩容、乐观锁悲观锁，却滔滔不绝。</details></li><li>https://go.dev/play/p/Te_KHn3sWYN Use only channels, big brother, which city is your company in, I want to go<br><details><summary>Show Chinese Reply</summary>https://go.dev/play/p/Te_KHn3sWYN 仅用通道实现，道兄，贵公司在何处，吾欲往。</details></li><li>time.sleep……<br><details><summary>Show Chinese Reply</summary>时眠者...</details></li><li>If the difficulty of a question is defined from the perspective of the pass rate distribution, 90% should be considered hard.<br><details><summary>Show Chinese Reply</summary>若以通过率之分布定题之难易，九成应为 Hard。</details></li><li>Although I know I should use waitgroup, doesn&#x27;t &quot;time sleep&quot; solve the problem that it exits before it is executed?<br><details><summary>Show Chinese Reply</summary>虽知应用等待组，然「时眠」岂非亦可解未竟而退之题？</details></li><li>This is not go basics, it&#x27;s just programming basics.<br><details><summary>Show Chinese Reply</summary>此非 go 之基，乃编程之基也。</details></li><li>Can I use third-party libraries? My brain has been spoiled by conc, I only remember conc&#x27;s WaitGroup, the system&#x27;s WaitGroup seems to belong to the sync package.<br><details><summary>Show Chinese Reply</summary>可用第三方库乎？吾脑已被 conc 惯坏，仅记 conc 之等待组，系统之等待组似属 sync 包。</details></li><li>@fruitmonster time sleep only reduces the probability of this problem, but does not solve the problem. If the operation is to request an API or other time-consuming operation, how long should you sleep? This method is not good, you still have to use wait group or other methods to synchronize.<br><details><summary>Show Chinese Reply</summary>@fruitmonster 时眠止降此问题之概率，而未解问题。若操作为请求 API 或其他耗时操作，当眠几何？此法不佳，当用等待组或其他法同步。</details></li><li>This situation at least shows that you have never done a program that requires graceful shutdown. It cannot be a death sentence, but at least you don&#x27;t know much about go<br><details><summary>Show Chinese Reply</summary>此况至少示之汝未尝作需优雅关闭之程序。不可判死刑，然至少对 go 所知不多。</details></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

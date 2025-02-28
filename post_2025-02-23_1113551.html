@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend masters, to what extent do you write comments in your interface documentation?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Backend masters, to what extent do you write comments in your interface documentation?</h1>
+        <details>
+            <summary>Show Chinese Title</summary>
+            <h3>叩问诸位后端道友，接口文牒注释详尽几何？</h3>
+        </details>
+        <div class="content">
+            <p>As the title suggests.
+
+This is written by another colleague in the group.
+
+```json
+{
+ &quot;code&quot;: 200,
+ &quot;data&quot;: {
+ &quot;forum&quot;: {
+ &quot;forum_id&quot;: 1, //Post ID
+ &quot;user_id&quot;: 2, //Poster ID
+ &quot;content&quot;: &quot;Only supports text input, Simplified Chinese, numbers, uppercase and lowercase letters, Chinese and English punctuation&quot;, //Post content
+ &quot;created_at&quot;: &quot;2024-12-12 16:28&quot;, //Posting time
+ &quot;user_name&quot;: &quot;Teacher&quot;, //Poster name
+ &quot;avatar&quot;: &quot;http://127.0.0.1:8000/assets/img/teacher_avatar_default.png&quot; //Poster avatar
+ },
+ &quot;forumReplyList&quot;: {
+ &quot;data&quot;: [
+ {
+ &quot;forum_reply_id&quot;: 15, //Reply content ID
+ &quot;forum_id&quot;: 1, //Post ID
+ &quot;user_id&quot;: 2, //Reply user ID
+ &quot;content&quot;: &quot;Another reply content&quot;, //Reply content
+ &quot;created_at&quot;: &quot;2024-12-14 22:54&quot;, //Reply time
+ &quot;forum_reply_like_count&quot;: 0, //Reply likes
+ &quot;user_name&quot;: &quot;Teacher&quot;, //Reply user name
+ &quot;avatar&quot;: &quot;http://127.0.0.1:8000/assets/img/teacher_avatar_default.png&quot;, //Reply user avatar
+ &quot;reply_user_name&quot;: &quot;Teacher&quot;, //Replied user name
+ &quot;is_delete&quot;: true, //Whether it is the current user&#x27;s reply: true is the current user&#x27;s reply and can be deleted, false is not the current user&#x27;s reply and cannot be deleted
+ &quot;is_like&quot;: false //Whether the current user likes it, true liked false not liked
+ }
+ ],
+ &quot;current&quot;: 1, //Current page
+ &quot;total&quot;: 12, //Total number
+ &quot;size&quot;: 10, //Current page size
+ &quot;has_more_page&quot;: true //Whether there is a next page: true has next page false no next page
+ }
+ }
+}
+```
+
+This is what I wrote, completely without comments.
+
+```json
+{
+ &quot;code&quot;: 200,
+ &quot;data&quot;: {
+ &quot;id&quot;: 2,
+ &quot;type&quot;: &quot;in_select&quot;,
+ &quot;question_description&quot;: &quot;Please select Azure Dragon or White Tiger&quot;,
+ &quot;question_images&quot;: [],
+ &quot;question_options&quot;: [
+ {
+ &quot;description&quot;: &quot;Azure Dragon&quot;,
+ &quot;image&quot;: null
+ },
+ {
+ &quot;description&quot;: &quot;White Tiger&quot;,
+ &quot;image&quot;: null
+ }
+ ],
+ &quot;student_answer_exists&quot;: true,
+ &quot;is_can_submit&quot;: false,
+ &quot;socket_name&quot;: &quot;course_interact_1_2&quot;
+ }
+}
+```
+
+```json
+{
+ &quot;code&quot;: 200,
+ &quot;data&quot;: [
+ {
+ &quot;id&quot;: 2,
+ &quot;body&quot;: &quot;Top level&quot;,
+ &quot;user_type&quot;: &quot;teacher&quot;,
+ &quot;user_nickname&quot;: &quot;Teacher Nickname A&quot;,
+ &quot;user_avatar&quot;: &quot;http://127.0.0.1:8000/assets/img/teacher_avatar_default.png&quot;,
+ &quot;created_at&quot;: &quot;2025-01-07 20:19:38&quot;,
+ &quot;childs&quot;: [
+ {
+ &quot;id&quot;: 6,
+ &quot;body&quot;: &quot;Reply 2 to Reply 1&quot;,
+ &quot;user_type&quot;: &quot;student&quot;,
+ &quot;user_nickname&quot;: &quot;Cheng Fengying&quot;,
+ &quot;user_avatar&quot;: &quot;http://127.0.0.1:8000/assets/img/student_avatar_default.png&quot;,
+ &quot;created_at&quot;: &quot;2025-01-07 20:20:15&quot;,
+ &quot;reply_user_nickname&quot;: &quot;Jin Ying&quot;
+ },
+ {
+ &quot;id&quot;: 5,
+ &quot;body&quot;: &quot;Reply 1 to Reply 1&quot;,
+ &quot;user_type&quot;: &quot;teacher&quot;,
+ &quot;user_nickname&quot;: &quot;An Zhiyuan&quot;,
+ &quot;user_avatar&quot;: &quot;http://127.0.0.1:8000/assets/img/teacher_avatar_default.png&quot;,
+ &quot;created_at&quot;: &quot;2025-01-07 20:20:12&quot;,
+ &quot;reply_user_nickname&quot;: &quot;Jin Ying&quot;
+ }
+ ]
+ }
+ ]
+}
+```
+
+Then a front-end colleague in the group hopes that I can write it more clearly and label the meaning of each field.
+
+I am confused.
+
+Furthermore,
+
+Front-end masters,
+
+What is the interface documentation like in your minds?</p>
+            <details>
+                <summary>Show Chinese Content</summary>
+                <p>正所谓题也。
+
+组内同门所书，其文如下：
+
+```json
+{
+    &quot;code&quot;: 200,
+    &quot;data&quot;: {
+        &quot;forum&quot;: {
+            &quot;forum_id&quot;: 1, //帖子 ID
+            &quot;user_id&quot;: 2, //发帖人 ID
+            &quot;content&quot;: &quot;仅支持文本输入，简体中文、数字、大小写字母，中英文标点符号&quot;, //帖子内容
+            &quot;created_at&quot;: &quot;2024-12-12 16:28&quot;, //发帖时间
+            &quot;user_name&quot;: &quot;教师&quot;, //发帖人名称
+            &quot;avatar&quot;: &quot;http://127.0.0.1:8000/assets/img/teacher_avatar_default.png&quot; //发帖人头像
+        },
+        &quot;forumReplyList&quot;: {
+            &quot;data&quot;: [
+                {
+                    &quot;forum_reply_id&quot;: 15, //回复内容 ID
+                    &quot;forum_id&quot;: 1, //帖子 ID
+                    &quot;user_id&quot;: 2, //回复用户 ID
+                    &quot;content&quot;: &quot;又一次回复内容&quot;, //回复的内容
+                    &quot;created_at&quot;: &quot;2024-12-14 22:54&quot;, //回复的时间
+                    &quot;forum_reply_like_count&quot;: 0, //回复的点赞
+                    &quot;user_name&quot;: &quot;教师&quot;, //回复用户的名称
+                    &quot;avatar&quot;: &quot;http://127.0.0.1:8000/assets/img/teacher_avatar_default.png&quot;, //回复用户的头像
+                    &quot;reply_user_name&quot;: &quot;教师&quot;, //被回复的用户名
+                    &quot;is_delete&quot;: true, //是否是当前用户的回复：true 是当前用户的回复可以删除，false 不是当前用户的回复不能删除
+                    &quot;is_like&quot;: false //当前用户是否点赞，true 已点赞 false 未点赞
+                }
+            ],
+            &quot;current&quot;: 1, //当前页
+            &quot;total&quot;: 12, //总共的数量
+            &quot;size&quot;: 10, //当前分页数量
+            &quot;has_more_page&quot;: true //是否有下一页：true 有下一页 false 没有下一页
+        }
+    }
+}
+```
+
+鄙人之作，空空如也。
+
+```json
+{
+    &quot;code&quot;: 200,
+    &quot;data&quot;: {
+        &quot;id&quot;: 2,
+        &quot;type&quot;: &quot;in_select&quot;,
+        &quot;question_description&quot;: &quot;请选择青龙还是白虎&quot;,
+        &quot;question_images&quot;: [],
+        &quot;question_options&quot;: [
+            {
+                &quot;description&quot;: &quot;青龙&quot;,
+                &quot;image&quot;: null
+            },
+            {
+                &quot;description&quot;: &quot;白虎&quot;,
+                &quot;image&quot;: null
+            }
+        ],
+        &quot;student_answer_exists&quot;: true,
+        &quot;is_can_submit&quot;: false,
+        &quot;socket_name&quot;: &quot;course_interact_1_2&quot;
+    }
+}
+```
+
+```json
+{
+    &quot;code&quot;: 200,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 2,
+            &quot;body&quot;: &quot;顶层&quot;,
+            &quot;user_type&quot;: &quot;teacher&quot;,
+            &quot;user_nickname&quot;: &quot;教师昵称阿&quot;,
+            &quot;user_avatar&quot;: &quot;http://127.0.0.1:8000/assets/img/teacher_avatar_default.png&quot;,
+            &quot;created_at&quot;: &quot;2025-01-07 20:19:38&quot;,
+            &quot;childs&quot;: [
+                {
+                    &quot;id&quot;: 6,
+                    &quot;body&quot;: &quot;回复 1 的回复 2&quot;,
+                    &quot;user_type&quot;: &quot;student&quot;,
+                    &quot;user_nickname&quot;: &quot;程凤英&quot;,
+                    &quot;user_avatar&quot;: &quot;http://127.0.0.1:8000/assets/img/student_avatar_default.png&quot;,
+                    &quot;created_at&quot;: &quot;2025-01-07 20:20:15&quot;,
+                    &quot;reply_user_nickname&quot;: &quot;金莹&quot;
+                },
+                {
+                    &quot;id&quot;: 5,
+                    &quot;body&quot;: &quot;回复 1 的回复 1&quot;,
+                    &quot;user_type&quot;: &quot;teacher&quot;,
+                    &quot;user_nickname&quot;: &quot;安智渊&quot;,
+                    &quot;user_avatar&quot;: &quot;http://127.0.0.1:8000/assets/img/teacher_avatar_default.png&quot;,
+                    &quot;created_at&quot;: &quot;2025-01-07 20:20:12&quot;,
+                    &quot;reply_user_nickname&quot;: &quot;金莹&quot;
+                }
+            ]
+        }
+    ]
+}
+```
+
+组内前端道友，望鄙人详述其意，标注每处灵韵。
+
+吾甚惑也。
+
+再问：
+
+诸位前端天骄，
+
+汝等心中，接口文牒当若何般？</p>
+            </details>
+        </div>
+        <div class="replies">
+            <ul>
+                <li>I cannot accept childs<br><details><summary>Show Chinese Reply</summary>不可纳子</details></li><li>First use a large model to help me build a basic structure, such as generating complete documentation directly from code or swagger, and then focus on improving key logical fields and easily confused fields. This kind of documentation is mostly nonsense, but some individual fields are indeed more convoluted and require special explanation. If you don&#x27;t have documentation or write it in detail, you may be responsible for the problem; but typing every field is purely physical work, so distinguish between primary and secondary, and make good use of AI.<br><details><summary>Show Chinese Reply</summary>宜先以鸿蒙模型构筑雏形，若依代码或Swagger衍化全文，再精炼要处，释疑难解之辞。文虽繁冗，见字明意者居多，然偶有晦涩，需点明。若无文牒或细微之处匮乏，责恐难逃；逐字注释，徒耗灵力。故当分清主次，善用智械。</details></li><li>Backend, every field must be documented. This is a basic requirement.<br><details><summary>Show Chinese Reply</summary>后端，诸字段皆需注释，此乃修行之基。</details></li><li>`is_can_submit` This naming method is so strange.<br><details><summary>Show Chinese Reply</summary>`is_can_submit`此命名甚异，灵韵不通。</details></li><li>There are many ways to document, not necessarily through comments. Generally speaking, if the data is clear, there is no need to comment on every field. And the suggestion of &quot;I hope you can write it more clearly and label the meaning of each field&quot; also lacks guidance. Which field has any ambiguity needs to be specifically pointed out. The sentence &quot;write in more detail&quot; makes the same mistake as &quot;the documentation is not detailed&quot;. For example: what other values are there besides in_select for type? Why are question_images empty? Why is it an array? How many images should be placed normally? Why is the image of options null, what format is supported? What does student_answer_exists mean? Does it mean it conflicts with other students&#x27; answers? What does is_can_submit mean? What situation will be false? What does socket_name mean? Why choose 2 for id? Is it globally unique? If it is globally unique, why not choose a large number as an example? If it is a sequence within a session, why not start from 1 or 0? What is &quot;Reply 2 to Reply 1&quot;? Is the reply with id 2 replying to 1? Who is Jin Ying? Is it the nickname of id 2, user_nickname is &quot;Teacher Nickname A&quot;? What is the time zone of created_at?<br><details><summary>Show Chinese Reply</summary>文牒之道繁多，非必以注释为之。常言道，数据清晰则不必尽注。然“望君详尽，标明各处灵韵”之言，亦乏指引。何处存疑，当明言。一句“详尽”，犯同“简略”之过。例如：type除in_select外，尚有何值？question_images为何为空？何故为数组？常例应置几图？options之image为何为空，所支持之格式为何？student_answer_exists何意？与他生之答相悖乎？is_can_submit何意？何况为假？socket_name何谓？id为何择2？是否寰宇唯一？若然，何不择一巨数以为例？若乃会话内之序，何不自1或0始？何谓“回复 1 的回复 2”？id为2之回复，答复1乎？金莹者何人？乃id为2，user_nickname为&quot;教师昵称阿&quot;之名乎？created_at之时区为何？</details></li><li>Since it is interface documentation, I suggest not using code comments to explain the fields, but writing them separately. The code is just a return example; in addition, whether each field needs to be explained specifically depends on the scene. If it is an internal front-end and back-end collaboration of the company, after having a fixed style habit, some general fields (such as id, total) can be Use without explaining each interface. If it is a public API or an API delivered to the outside, the more detailed the better.<br><details><summary>Show Chinese Reply</summary>既为接口文牒，宜另撰文以释字段，代码仅作示例。再者，是否详述，端看境况。若乃公司内部协作，既有定式，则通用者（如id，total），可免赘述。若乃公诸于众之API，则愈详尽愈佳。</details></li><li>The documentation is a contract signed between the backend and the frontend. Can you sign the contract like this?<br><details><summary>Show Chinese Reply</summary>文牒乃后端与前端所立之契，此等契约，汝能签否？</details></li><li>Add comments for enumeration values, add comments for multiple some ids, and don&#x27;t add others.<br><details><summary>Show Chinese Reply</summary>枚举之值，须加注释；多重ID，亦需备注；余者可免。</details></li><li>Interrupting, here is my open source interface tool https://github.com/LinuxSuRen/api-testing<br><details><summary>Show Chinese Reply</summary>闲话一句，此乃吾之开源接口工具：https://github.com/LinuxSuRen/api-testing</details></li><li>Isn&#x27;t the comment written well in the code and then a swagger document generated?<br><details><summary>Show Chinese Reply</summary>莫非代码中注释详尽，再以Swagger生成文牒乎？</details></li><li>If you don&#x27;t write comments, who knows what this field is for? If you guess wrong and there is a BUG, will you change it or will the frontend change it? At least provide a name comment corresponding to the frontend for each field, whether it is required, the data type (format requirements), and if it is an enumeration, provide the value and corresponding description or source of each option. If this structure has appeared in other interfaces, I will indicate that the structure and comments in this field are based on the structure under a certain field of a certain interface, for example, for the data under the forumReplyList field, I will mark it as the structure in the array is forumReply{}, with the interface The structure with the same name in /reply/view shall prevail, and I will clearly specify the name of the structure in that interface.<br><details><summary>Show Chinese Reply</summary>不书注释，谁知此字段作甚？若猜错出BUG，君改之抑或前端改之？每字段当注名，对应前端，是否必填，数据类项（格式要求），若是枚举，明其值及释义，或溯其源。若此结构现于他接口，则标明此字段结构及注释，以某接口某字段下结构为准。如forumReplyList字段，注曰：数组内结构为forumReply{}，以接口/reply/view之同名结构为准，吾当于彼接口明言此结构之名。</details></li><li>If you are a frontend developer and the backend only gives you unclear return examples, you will probably be even more confused.<br><details><summary>Show Chinese Reply</summary>若君乃前端，后端仅予模糊示例，则恐更迷茫矣。</details></li><li>If you are developing it yourself, if you are sure that the field name is clear and understandable, you don&#x27;t need to write it, for example, everyone knows what user_id is, but the three-month-old you will be confused about is_delete, so if it is a multi-person collaboration, it is necessary to ensure that each field is clearly commented, because you cannot guarantee that everyone can understand the naming of each field, and this only needs to be written once to benefit everyone (including yourself), which is also a basic literacy.<br><details><summary>Show Chinese Reply</summary>若君独力开发，字段名明晰易懂则可免注。如 user_id，人皆知其意。然 is_delete，三月后之君恐亦困惑。故若多人协作，则必使每字段注释清晰。盖不能保人人皆解各字段之命名。此举一劳永逸，泽被众人（亦包括君），乃修行之基也。</details></li><li>Write comments for some main logic. As for enumerations, because the model definition has a method to replace them with Chinese, there are no comments. It depends on whether it is collaborative development or self-development. Just be comfortable with yourself. For collaborative basic grammar, you don’t need to write other things that should be written.<br><details><summary>Show Chinese Reply</summary>主逻辑处书注释。枚举之属，因模型定义可代以中文，故免于注释。观其协作开发抑或独力开发，随心所欲。协作之基，语法可免，余者当书。</details></li><li>Your field names are easy to understand, but your colleague&#x27;s is like telling you 1+1=2, this is a mouse, this is a monitor, that level.<br><details><summary>Show Chinese Reply</summary>君之字段名易解，同僚之作却似教人一加一等于二，此乃鼠矣，此乃芒镜矣，徒增笑耳。</details></li><li>Either note it in the class and use swagger to display the meaning of the field.<br><details><summary>Show Chinese Reply</summary>或于类中备注，以 Swagger 显字段之义。</details></li><li>The interface uses GraphQL, and detailed field comments will be written in the code, and then GraphQL Schema will be generated using the framework. The front end directly uses GraphQL Schema to generate interface SDK to ensure end-to-end type safety.<br><details><summary>Show Chinese Reply</summary>接口用GraphQL，代码中详注字段，再以框架生GraphQL Schema。前端直用GraphQL Schema衍接口SDK，保端对端类型之安全。</details></li><li>@wogogoing @zbw0414 swagger +1, I like to use fastapi / robyn with openapi/swagger documentation output, which is concise and clear and can also be tested online directly.<br><details><summary>Show Chinese Reply</summary>@wogogoing @zbw0414 Swagger赞！善用FastAPI/Robyn之辈，拥OpenAPI/Swagger文档输出，简明扼要，可在线测试。</details></li><li>openapi<br><details><summary>Show Chinese Reply</summary>开道。</details></li><li>Let AI add comments, it doesn&#x27;t take you much time.<br><details><summary>Show Chinese Reply</summary>遣智械添注，不费尔几时。</details></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

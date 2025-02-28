@@ -3,7 +3,7 @@ clean:
 	rm -f *.css
 
 copy-html:
-	cp ../v2ex_mofish/html_output/* .
+	cp ../v2ex-digest/html_output/* .
 
 git-commit:
 	git add .
