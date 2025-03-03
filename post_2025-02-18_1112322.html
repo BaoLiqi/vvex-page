@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golang veterans, please show your skills quickly</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Golang veterans, please show your skills quickly</h1>
+        <details>
+            <summary>Show Chinese Title</summary>
+            <h3>golang 老鸟快快显圣</h3>
+        </details>
+        <div class="content">
+            <p>## Background
+
+I transitioned from a front-line developer to an IT project manager in a state-owned enterprise. I work from 9 to 5, and my daily routine mainly consists of being scolded by people in the government office, and then I turn around and scold the outsourcing vendors. There&#x27;s not much else to do. However, I can&#x27;t let go of my passion for technology. I&#x27;ve been writing Java for 10 years and I&#x27;m tired of it, so I want to use Golang to write some fun things.
+
+## Current situation
+
+I recently tried to write some small web applications using Golang, but I found it difficult to find a project structure suitable for small projects online. The structures provided by AI are also large-scale. I use Fiber and GORM, and Viper for configuration file parsing. I&#x27;m also confused about GORM&#x27;s transaction management, and I generate everything using cursors.
+
+## Request
+
+Based on my desire to create small things, please advise on a mini project structure, recommend technology choices, and provide guidance on GORM&#x27;s transaction control.</p>
+            <details>
+                <summary>Show Chinese Content</summary>
+                <p>## 背景
+
+我是从一线开发转行到国企做信息化项目管理，朝九晚五，上班基本就是我去 ZF 那边挨骂，然后我转头去骂外包商，基本没什么事。但是我一直放不下自己的技术情节，Java 写了 10 年也腻了，就想用 golang 自己写点东西玩。
+
+## 现状
+
+我最近尝试用 golang 写一些 web 小玩意儿，但是我很难在网上找到一个适合小项目的项目结构，AI 给的也是大型化的结构。我用 fiber 和 gorm ，viper 做配置文件解析。gorm 的事务管理也比较懵，我都是 cursor 生成。
+
+## 诉求
+
+请各位针对我只搞小玩意儿的诉求，指点一个 mini 的项目结构，推荐技术选型，指点一下 gorm 的事务控制。</p>
+            </details>
+        </div>
+        <div class="replies">
+            <ul>
+                <li>@laikick golang-standards/project-layout This is not a good structure at all: and the author of this repo can be considered the most shameless person in the Go community. I don&#x27;t even dare to use &quot;one of the most shameless&quot; to describe him, for fear that &quot;one of&quot; is not accurate: https://github.com/golang-standards/project-layout/issues/117 Please be a good person and stop recommending this, it&#x27;s misleading.<br><details><summary>Show Chinese Reply</summary>@laikick golang-standards/project-layout 这个根本不算是好的结构：而且这个 repo 作者可以算是 go 社区里最不要脸的了，我都不敢用“最不要脸的之一”来描述他、怕“之一”不准确：https://github.com/golang-standards/project-layout/issues/117请做个好人，不要再向别人推荐这个带来更多误导。</details></li><li>&gt; Yes, yes, child, you are right @laikick. Actually, if you can&#x27;t speak Chinese well, you can just hang out in non-Chinese circles. I&#x27;ve seen people criticize you, isn&#x27;t that ruining yourself? Why bother?<br><details><summary>Show Chinese Reply</summary>&gt; 是的是的 孩子 你是对的@laikick 其实如果自己不会好好说中文的话，可以完全去混非中文圈，看到过别人喷你、这不是糟蹋自己嘛，何必呢</details></li><li>After arguing for so long, hasn&#x27;t anyone looked at the official documentation? https://go.dev/doc/modules/layout and this https://go.dev/doc/<br><details><summary>Show Chinese Reply</summary>吵半天，就没人看看官方文档？https://go.dev/doc/modules/layout还有这个 https://go.dev/doc/</details></li><li>I suggest you take a look at the Prometheus source code: https://github.com/prometheus/prometheus Which project above has better code quality than Prometheus? Do you understand? It depends on your project. You can arrange it however you want. Go doesn&#x27;t have that many restrictions.<br><details><summary>Show Chinese Reply</summary>我建议你看一眼 prometheus 的源码： https://github.com/prometheus/prometheus上面哪个项目代码质量能比 prometheus 好？懂了么？根据你的项目而定，想怎么摆怎么摆，go 没那么多限制</details></li><li>https://github.com/golang-standards/project-layout<br><details><summary>Show Chinese Reply</summary>https://github.com/golang-standards/project-layout</details></li><li>You can refer to Kratos&#x27; project structure. Although it is an RPC framework, you can also use it to write web applications.<br><details><summary>Show Chinese Reply</summary>Kratos 的工程结构可以参考下,虽然是 rpc 框架,但是你写 web 也可以</details></li><li>@lesismal Yes, yes, child, you are right.<br><details><summary>Show Chinese Reply</summary>@lesismal 是的是的 孩子 你是对的</details></li><li>@lesismal What a coincidence, I don&#x27;t like this directory structure either. @thisisgpy I modified it based on this project: https://github.com/mikestefanello/pagoda<br><details><summary>Show Chinese Reply</summary>@lesismal 好巧，我也不喜欢这个目录结构@thisisgpy 我是基于这个项目改的 https://github.com/mikestefanello/pagoda</details></li><li>You have a passion for technology, how come you can&#x27;t even handle the documented GORM transactions? What&#x27;s going on?<br><details><summary>Show Chinese Reply</summary>有技术情节，咋个连有文档的 gorm 事务都搞不定？怎么个事儿</details></li><li>Read the GF official documentation, and just use the GF library.<br><details><summary>Show Chinese Reply</summary>把 gf 官方文档看完，只用 gf 一个库就行。</details></li><li>Don&#x27;t scold the outsourcing team, be nice to them.<br><details><summary>Show Chinese Reply</summary>别骂外包，对外包好点</details></li><li>When writing Go codes, treat it as procedural programming. It&#x27;s all about calling functions, so there&#x27;s not much burden. Isn&#x27;t GORM transaction very simple? Just follow the documentation.<br><details><summary>Show Chinese Reply</summary>写 go 把 go 当成面向过程，全是在调用函数 就没那么大负担了。gorm 事务不是很简单吗。跟着文档声明就好了。</details></li><li>Many people who switch to Go bring the ideas of their mother tongue, such as Java/PHP, encapsulating Go frameworks and libraries, basically around the previous framework design ideas, using OOP to write Go code, which is contrary to the Go language design, and it feels weird to write, but one thing, for work or salary programming, there is nothing wrong with doing so😂.<br><details><summary>Show Chinese Reply</summary>好多转 go 的人，会把母语的思想带入进来，例如 java/php ，封装 go 框架和库，基本都是围绕之前框架设计思想来的，用 oop 去写 go 代码，跟 go 语言设计是相违背的，写起来怪怪的，不过有一点，面向工作或工资编程，这么做也没什么不对的😂。</details></li><li>Let go of Java thinking.<br><details><summary>Show Chinese Reply</summary>放下 java 思想</details></li><li>Is GF not good?<br><details><summary>Show Chinese Reply</summary>gf 不行么？</details></li><li>However, there is no need to worry about the project structure for small projects.<br><details><summary>Show Chinese Reply</summary>不过小项目根本没啥必要纠结项目结构.</details></li><li>If so, then I&#x27;ll promote my open-source project: https://github.com/keepchen/go-sail<br><details><summary>Show Chinese Reply</summary>如果是这样的话，那我安利下我的开源项目：https://github.com/keepchen/go-sail</details></li><li>@lesismal You are right 👍<br><details><summary>Show Chinese Reply</summary>@lesismal 你是对的 👍</details></li><li>Engineering: https://github.com/golang-standards/project-layout Then look at other people&#x27;s projects, https://github.com/go-admin-team/go-admin https://github.com/GoAdminGroup/go-admin https://github.com/flipped-aurora/gin-vue-admin Understand it, know how to use it, and just go for it.<br><details><summary>Show Chinese Reply</summary>工程化： https://github.com/golang-standards/project-layout然后看看别人项目，https://github.com/go-admin-team/go-adminhttps://github.com/GoAdminGroup/go-adminhttps://github.com/flipped-aurora/gin-vue-admin看懂了，会用了，就一把梭。</details></li><li>If it&#x27;s web backend, I have one myself: https://gitea.loveuer.com/loveuer/ultone<br><details><summary>Show Chinese Reply</summary>如果是 web 后端的话，我自己有搞一个 https://gitea.loveuer.com/loveuer/ultone</details></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
